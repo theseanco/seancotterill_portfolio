@@ -1,0 +1,55 @@
+/*
+TODO:
+
+ANALYSE WHY THE FUCK THIS WORKS.
+
+It's something to do with relative and absolute positioning
+The container is relatively positioned, which isolates it within the webpage
+The overlay is absolutely positioned,
+
+*/
+
+.text {
+  opacity: 0;
+}
+
+.imageContainer:hover .overlay {
+  opacity: 0.9;
+  background-color: #985E6D
+}
+
+.imageContainer:hover .text {
+  opacity: 1;
+  transition: 1.5s ease;
+}
+
+.imageContainer {
+  position:relative;
+  display: flex;
+  height: 25vh
+}
+
+.overlay {
+  position: absolute;
+  opacity: 0.3;
+  height: 100%;
+  width: 100%;
+  background-color: #192231;
+  transition: .5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*
+This is a CSS selector that conditionally edits the overlay to do a particular job. in this case turning on the overlay
+*/
+
+
+.image {
+  position:relative;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/51/Love_Music_Hate_Racism_Gig.jpg");
+  background-position: center center;
+  height: 100%;
+  width: 100%
+}

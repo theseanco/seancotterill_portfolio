@@ -1,0 +1,28 @@
+{
+  "name": "sean-cotterill-website",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "babel-plugin-emotion": "^9.2.6",
+    "emotion": "^9.2.6",
+    "react": "^16.4.2",
+    "react-collapse": "^4.0.3",
+    "react-dom": "^16.4.2",
+    "react-emotion": "^9.2.6",
+    "react-flexbox-grid": "^2.1.2",
+    "react-grid-system": "^4.3.0",
+    "react-motion": "^0.5.2",
+    "react-pure-lifecycle": "^3.0.0",
+    "react-scripts": "1.1.5",
+    "react-typography": "^0.16.13",
+    "typography": "^0.16.17",
+    "typography-theme-grand-view": "^0.15.10",
+    "typography-theme-moraga": "^0.15.10"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

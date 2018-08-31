@@ -1,0 +1,25 @@
+.imageStyling {
+  max-width: 300px;
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.removeMargins {
+  margin: 0
+}
+
+.cardText {
+  text-align: center;
+}
+
+.cardAlignment {
+  text-align: center;
+}
+
+.imageCardContainer {
+  padding: 1rem
+}
+
+.overrideMargins {
+  margin-bottom: 0
+}
