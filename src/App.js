@@ -65,6 +65,12 @@ const fieldNames = [
     'Hacks/Tools/Projects'
   ]
 
+const cardImages = [
+  "https://f4.bcbits.com/img/a0360341033_10.jpg",
+  "https://payload499.cargocollective.com/1/22/723789/12288259/Stitches_cropped_4_670.png",
+  "http://www.stateofgracenortheast.co.uk/uploads/5/3/7/7/53770757/4668767_orig.jpg",
+  "https://payload529.cargocollective.com/1/22/723789/12880873/Screenshot_20170530_141434_670.png"
+];
 
 const typography = new Typography(moragaTheme)
 
@@ -265,7 +271,7 @@ class App extends Component {
               <div
                 className="bottom-border top-border"
                 onClick={(param) => this.changeOpenTabs(i)}>
-                  <SectionCard title={fieldNames[i]} />
+                  <SectionCard title={fieldNames[i]} imageurl={cardImages[i]}/>
                 </div>
             </Collapse>
             <Collapse isOpened={this.state.openTabs[i]}>

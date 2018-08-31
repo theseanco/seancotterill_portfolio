@@ -48,7 +48,6 @@ This is a CSS selector that conditionally edits the overlay to do a particular j
 
 .image {
   position:relative;
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/51/Love_Music_Hate_Racism_Gig.jpg");
   background-position: center center;
   height: 100%;
   width: 100%
