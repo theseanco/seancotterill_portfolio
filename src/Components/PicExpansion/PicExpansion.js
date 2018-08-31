@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import './picexpansion.css'
-import ImageCard from '../ImageCard/ImageCard'
-import {livecodingdata} from '../../Data/livecodingdata.js'
+import './picexpansion.css';
+import ImageCard from '../ImageCard/ImageCard';
+import {livecodingdata} from '../../Data/livecodingdata.js';
+import {samplersamplerdata} from '../../Data/samplersamplerdata.js';
+import {freelancedata} from '../../Data/freelancedata.js';
+import {projectsdata} from '../../Data/projectsdata.js';
 import { Container, Row, Col } from 'react-flexbox-grid';
 
 /*
@@ -10,14 +13,12 @@ Expansion grid designed to hold text on the left and a set of 'selected works' o
 
 Uses react-flexbox-grid to assign widths.
 
-TODO:
-- Prop as an object name
 
 */
 
 const PicExpansion = ({ dataIndex }) => {
 
-  const dataTypes = [livecodingdata, livecodingdata, livecodingdata, livecodingdata]
+  const dataTypes = [livecodingdata, samplersamplerdata, freelancedata, projectsdata]
 
   return (
     <div className="masterdiv">
