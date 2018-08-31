@@ -4,7 +4,8 @@ import SectionCard from './Components/SectionCard/SectionCard';
 import SectionCardDummy from './Components/SectionCardDummy/SectionCardDummy';
 import { TypographyStyle, GoogleFont } from 'react-typography';
 import { Container, Row, Col } from 'react-flexbox-grid';
-import BottomBarTable from './Components/BottomBarTable/BottomBarTable';
+import BottomBar from './Components/BottomBar/BottomBar';
+import Footer from './Components/Footer/Footer';
 import PicExpansion from './Components/PicExpansion/PicExpansion';
 import Typography from 'typography';
 import moragaTheme from 'typography-theme-moraga';
@@ -40,7 +41,9 @@ x Make paragraphs better
 x Make all units collapse when one is opened (!!).
 x Programatically generate fields using a map function
 - Make sure content of right divs are right-aligned
-- Add pictures to cards
+x Add pictures to cards
+x edit picture of SoG
+x sticky bottom bar (Achieved with UnmountClosed)
 
 */
 
@@ -68,7 +71,7 @@ const fieldNames = [
 const cardImages = [
   "https://f4.bcbits.com/img/a0360341033_10.jpg",
   "https://payload499.cargocollective.com/1/22/723789/12288259/Stitches_cropped_4_670.png",
-  "http://www.stateofgracenortheast.co.uk/uploads/5/3/7/7/53770757/4668767_orig.jpg",
+  "https://raw.githubusercontent.com/theseanco/seancotterill_portfolio/master/4668767_orig.jpg",
   "https://payload529.cargocollective.com/1/22/723789/12880873/Screenshot_20170530_141434_670.png"
 ];
 
@@ -93,7 +96,8 @@ class App extends Component {
       displayTestText: false,
       openTabs: [false, false, false, false],
       openCategories: [true, true, true, true],
-      cat1Open: false
+      cat1Open: false,
+      bottomBarOpen: false
     }
     this.changeOpenTabs = this.changeOpenTabs.bind(this);
   }
@@ -105,10 +109,17 @@ class App extends Component {
 
     //if tab is already clicked, it will not expand
     if (!this.state.openTabs[index]) {
+    //select the tab that remains open and write it to the array
+    //select the category that will be opened and write it to the array
     opentabs[index] = true;
     openCategories[index] = true;
   } else {
+    //close all text boxes and show only image tabs
     openCategories = [true, true, true, true]
+    //collapse the bottom bar. This could be abstracted out. Side effects.
+    this.setState(prevState => ({
+      bottomBarOpen: false
+    }))
   };
 
     //expand tabs
@@ -137,134 +148,7 @@ class App extends Component {
   //A grid (first thing I made)
   //OR: a new screen to test out app features.
   conditionalRender() {
-    if (!this.state.testFeatures) {
-      {/* the first version of the table*/}
-      return(
-        <div className="tableBackground">
-          <Row>
-            <Col xs >
-              <SectionCard title={`some work`}/>
-            </Col>
-            <Col xs>
-              <SectionCard title={`a bit more work`}/>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs >
-              <SectionCard title={`different work`}/>
-            </Col>
-            <Col xs >
-              <SectionCard title={`the other thing`}/>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs >
-              <BottomBarTable />
-            </Col>
-          </Row>
-        </div>
-      )
-    } else {
-
-
-      /*
-      OLD CODE for a test of react-collapse
-      return(
-          <div onClick={(e) => this.setState(prevState => ({displayTestText: !prevState.displayTestText})) } >
-            <SectionCard title={`test card for expansion`} />
-            <Collapse isOpened={this.state.displayTestText}>
-              <p> expand expand expand expand expand expand expand </p>
-            {this.renderParagraph()}
-          </Collapse>
-          </div>
-      )
-      */
-
-
-      //This can be refactored into a map function
-
-
-
-      /*
-
-      uncomment this for dumb hard-coded stuff
-
-      return(
-      <div className="tableBackground">
-          <Row>
-            <Col xs >
-
-            <Collapse isOpened={this.state.openCategories[0]}>
-              <div
-                className="bottom-border top-border"
-                onClick={(param) => this.changeOpenTabs(0)}>
-              <SectionCard title={`some work`} />
-              </div>
-          </Collapse>
-
-          <Collapse isOpened={this.state.openTabs[0]}>
-            <PicExpansion dataIndex={0}/>
-          </Collapse>
-            </Col>
-          </Row>
-
-            <Row>
-            <Col xs>
-
-              <Collapse isOpened={this.state.openCategories[1]}>
-              <div
-                className="bottom-border"
-                onClick={(param) => this.changeOpenTabs(1)}
-                >
-              <SectionCard title={`a bit more work`}/>
-            </div>
-
-          </Collapse>
-            <Collapse isOpened={this.state.openTabs[1]}>
-            <PicExpansion dataIndex={1}/>
-          </Collapse>
-
-            </Col>
-          </Row>
-
-          <Row>
-            <Col xs >
-              <Collapse isOpened={this.state.openCategories[2]}>
-              <div
-                className="bottom-border"
-                onClick={(param) => this.changeOpenTabs(2)}>
-              <SectionCard title={`different work`}/>
-            </div>
-          </Collapse>
-
-          <Collapse isOpened={this.state.openTabs[2]}>
-            <PicExpansion dataIndex={2}/>
-          </Collapse>
-            </Col>
-          </Row>
-
-          <Row>
-            <Col xs >
-              <Collapse isOpened={this.state.openCategories[3]}>
-              <div
-                onClick={(param) => this.changeOpenTabs(3)}
-                className="bottom-border">
-              <SectionCard title={`the other thing`}/>
-            </div>
-          </Collapse>
-
-            <Collapse isOpened={this.state.openTabs[3]}>
-              <PicExpansion dataIndex={3} />
-            </Collapse>
-            </Col>
-          </Row>
-
-        </div>
-      )
-      */
-
       return (
-
         <div>
       {fieldNames.map((data, i) => {
         return (
@@ -277,17 +161,35 @@ class App extends Component {
                   <SectionCard title={fieldNames[i]} imageurl={cardImages[i]}/>
                 </div>
             </Collapse>
-            <Collapse isOpened={this.state.openTabs[i]}>
-              <PicExpansion dataIndex={i} />
+            <Collapse isOpened={this.state.openTabs[i]}  hasNestedCollapse={true}>
+              <PicExpansion dataIndex={i} openFooter={this.state.openTabs[i]}/>
             </Collapse>
+
+            {/*
+            <UnmountClosed isOpened={this.state.openTabs[i]}>
+              <Footer>
+                <span> fdsjkfs </span>
+              </Footer>
+            </UnmountClosed>
+            */}
           </Col>
         </Row>
         )
       })}
-    </div>
 
+      {/*
+<Collapse isOpened={this.state.bottomBarOpen}>
+  <div>
+              <BottomBar />
+            </div>
+            </Collapse>
+            */}
+    </div>
     )
-    }}
+    }
+
+
+
 
     render() {
       return (

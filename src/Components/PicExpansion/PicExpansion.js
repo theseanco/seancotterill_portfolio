@@ -6,6 +6,13 @@ import {samplersamplerdata} from '../../Data/samplersamplerdata.js';
 import {freelancedata} from '../../Data/freelancedata.js';
 import {projectsdata} from '../../Data/projectsdata.js';
 import { Container, Row, Col } from 'react-flexbox-grid';
+import {UnmountClosed} from 'react-collapse'
+
+//bottom bar that doesn't work
+import BottomBar from '../BottomBar/BottomBar'
+
+//footer that might
+import Footer from '../Footer/Footer'
 
 /*
 
@@ -16,7 +23,7 @@ Uses react-flexbox-grid to assign widths.
 
 */
 
-const PicExpansion = ({ dataIndex }) => {
+const PicExpansion = ({ dataIndex, openFooter }) => {
 
   const dataTypes = [livecodingdata, samplersamplerdata, freelancedata, projectsdata]
 
@@ -27,7 +34,6 @@ const PicExpansion = ({ dataIndex }) => {
       <div className="textDiv">
         <h1> {dataTypes[dataIndex].title} </h1>
         <p> {dataTypes[dataIndex].paragraph} </p>
-        <p> paragraph 2 </p>
       </div>
     </Col>
     <Col lg={9} md={8} sm={8} xs={6}>
@@ -48,7 +54,14 @@ const PicExpansion = ({ dataIndex }) => {
         </div>
       </Col>
       </Row>
-      </div>
+
+        <UnmountClosed isOpened={openFooter}>
+          <Footer>
+            <span>twitter github bandcamp soundcloud linkedin </span>
+          </Footer>
+        </UnmountClosed>
+
+     </div>
     );
   }
 

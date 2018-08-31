@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
-import './bottombartable.css'
+import './bottombar.css';
 
 const BottomBar = ({ props }) => {
   return (
+    <footer>
     <div className="bottomBarStyling">
-      <p> Socials And Stuff Like That Go Here </p>
+      <p>fdshfkjshfdk
+        fdsdfjhdsfkjfshkfjshsfdkj
+
+
+      fdsfsdsfjfsdkljfsdlk
+
+    fdsjkl</p>
     </div>
-      );
+  </footer>
+  );
 }
 
 export default BottomBar
