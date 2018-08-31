@@ -72,6 +72,9 @@ const cardImages = [
   "https://payload529.cargocollective.com/1/22/723789/12880873/Screenshot_20170530_141434_670.png"
 ];
 
+const altSOGPic = "http://www.stateofgracenortheast.co.uk/uploads/5/3/7/7/53770757/9561895_orig.jpg"
+
+
 const typography = new Typography(moragaTheme)
 
 class App extends Component {

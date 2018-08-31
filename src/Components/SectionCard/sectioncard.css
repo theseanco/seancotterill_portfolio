@@ -49,6 +49,7 @@ This is a CSS selector that conditionally edits the overlay to do a particular j
 .image {
   position:relative;
   background-position: center center;
+  background-size: cover;
   height: 100%;
   width: 100%
 }
